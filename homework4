@@ -1,8 +1,42 @@
-Script started on Tue Feb 11 17:56:44 2014
-[?1034hbash-3.2$ exitrails consoles[Kconsoles[Kconsole
+Script started on Tue Feb 16 13:03:49 2014
+[?1034hbash-3.2$ rails console
 Loading development environment (Rails 4.0.2)
-[?1034h2.1.0 :001 > exit
-bash-3.2$ exit
+[?1034h2.1.0 :001 > der[Kf string_shuffle(s)
+2.1.0 :002?>   s.split()')')[C.shuffle.join
+2.1.0 :003?>   end[C[C[C
+ => :string_shuffle 
+2.1.0 :004 > string)[K_shuffle()")")f")o")o")b")a")r")]")[1P")[C
+ => "oboarf" 
+2.1.0 :005 > class s[KString
+2.1.0 :006?>   def shuffle
+2.1.0 :007?>     self.split('').j[Kshuffle.join
+2.1.0 :008?>     end
+2.1.0 :009?>   end
+ => :shuffle 
+2.1.0 :010 > "foobar".shuffle
+ => "faobor" 
+2.1.0 :011 > person1 = {  first: MT, last: Schmitz  {[K}
+NameError: uninitialized constant MT
+	from (irb):11
+	from /Users/aclamtheegg/.rvm/gems/ruby-2.1.0@railstutorial_rails_4_0/gems/railties-4.0.2/lib/rails/commands/console.rb:90:in `start'
+	from /Users/aclamtheegg/.rvm/gems/ruby-2.1.0@railstutorial_rails_4_0/gems/railties-4.0.2/lib/rails/commands/console.rb:9:in `start'
+	from /Users/aclamtheegg/.rvm/gems/ruby-2.1.0@railstutorial_rails_4_0/gems/railties-4.0.2/lib/rails/commands.rb:62:in `<top (required)>'
+	from bin/rails:4:in `require'
+	from bin/rails:4:in `<main>'
+2.1.0 :012 > person1 = {  first: MT, last: Schmitz  }[1@"[C[C[1@"[C[C[C[C[C[C[C[C[1@"[C[C[C[C[C[C[C[1@"
+ => {:first=>"MT", :last=>"Schmitz"} 
+2.1.0 :013 > person2 = {  B[Kfirst: "Albuquerke[K[Kque", last: Schmitz""Schmitz"[C[C[C[C[C[C[C[C }
+ => {:first=>"Albuquerque", :last=>"Schmitz"} 
+2.1.0 :014 > persto[K[Kon2[K3 = {  Justin[K[K[K[K[K[Kfirst:  [K"Stephen", last: "Anderson"  }
+ => {:first=>"Stephen", :last=>"Anderson"} 
+2.1.0 :015 > params = { father: person1, mot[K[Kother: person2, child: person2[K3  }
+ => {:father=>{:first=>"MT", :last=>"Schmitz"}, :mother=>{:first=>"Albuquerque", :last=>"Schmitz"}, :child=>{:first=>"Stephen", :last=>"Anderson"}} 
+2.1.0 :016 > params[f[K:father][:first]
+ => "MT" 
+2.1.0 :017 > params[:father][:first][1P][:first][1P][:first][1P][:first][1P][:first][1P][:first][1P][:first]c][:first]h][:first]i][:first]l][:first]d][:first][C[C[C[C[C[C[C[C[1P][1P][1P][1P][1P]l]a]s]t]
+ => "Anderson" 
+2.1.0 :018 > exit
+bash-3.2$ eix[K[Kxit
 exit
 
-Script done on Tue Feb 11 18:00:24 2014
+Script done on Tue Feb 18 13:49:34 2014
