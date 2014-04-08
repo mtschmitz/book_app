@@ -13,17 +13,25 @@ class UsersController < ApplicationController
   end
   
   def new
+    if signed_in?
+      redirect_to root_url
+    else
     @user = User.new
+    end
   end
   
   def create
-    @user = User.new(user_params)
-    if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+    if signed_in?
+      redirect_to root_url
     else
-      render 'new'
+    @user = User.new(user_params)
+      if @user.save
+        sign_in @user
+        flash[:success] = "Welcome to the Sample App!"
+        redirect_to @user
+      else
+        render 'new'
+      end
     end
   end
   
@@ -40,9 +48,13 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    if current_user.id == params[:id]
+      redirect_to root_url
+    else
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
     redirect_to users_url
+    end
   end
 
 
@@ -69,5 +81,4 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user.admin?
     end
 
-    
 end

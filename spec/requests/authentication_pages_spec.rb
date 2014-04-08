@@ -42,6 +42,11 @@ describe "authorization" do
     describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
       
+      it { should_not have_link('Profile',     href: user_path(user)) }
+      it { should_not have_link('Users',       href: users_path) }      
+      it { should_not have_link('Settings',    href: edit_user_path(user)) }
+
+      
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
@@ -77,6 +82,33 @@ describe "authorization" do
       end
     end
     
+    
+    describe "when attempting to visit a protected page" do
+      
+        describe "after signing in" do
+      let(:user) { FactoryGirl.create(:user) }
+      before { sign_in user }
+          it "should render the desired protected page" do
+            expect(page).to have_title('Edit user')
+          end
+
+          describe "when signing in again" do
+            before do
+              click_link "Sign out"
+              visit signin_path
+              fill_in "Email",    with: user.email
+              fill_in "Password", with: user.password
+              click_button "Sign in"
+            end
+
+            it "should render the default (profile) page" do
+              expect(page).to have_title(user.name)
+            end
+          end
+        end
+      end
+    
+    
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
@@ -103,9 +135,8 @@ describe "authorization" do
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { expect(response).to redirect_to(root_url) }
-    end
+      end
     end
   end
-
 end
 
