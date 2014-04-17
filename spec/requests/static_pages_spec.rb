@@ -60,4 +60,60 @@ describe "Static pages" do
     
     it_should_behave_like "all static pages"
   end
+  
+  
+  
+   describe "for signed-in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
+        FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")
+        sign_in user
+        visit root_path
+      end
+
+
+      it "should render the user's feed" do
+        user.feed.each do |item|
+          page.should have_selector("li##{item.id}", text: item.content)
+        end
+      end
+    
+     describe "sidebar micropost count" do
+      it "should have the count" do
+      expect {  user.microposts.count }
+      end
+    end
+
+    describe "sidebar micropost pluralize" do
+      it "should be pluralized" do
+      expect { pluralize(user.microposts.count, "micropost") }
+    end
+  end
+
+   describe "micropost pagination" do
+     it "should be paginated" do
+      30.times { FactoryGirl.create(:micropost, user: user, content: "Lorum Ipsum 77") }
+    
+     visit root_path
+     page.should have_selector('div.pagination')
+     end
+  end 
+  end
+
+  describe "between users activity" do
+    let(:other_user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
+      before do
+        FactoryGirl.create(:micropost, user: other_user, content: "Lorem ipsum")
+        FactoryGirl.create(:micropost, user: other_user, content: "Dolor sit amet")
+        sign_in user
+        visit root_path
+      end
+      
+             it { should_not have_link('delete') }
+    
+
+  end
+
 end

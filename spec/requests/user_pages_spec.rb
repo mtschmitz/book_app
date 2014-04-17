@@ -57,8 +57,8 @@ describe "User pages" do
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
-  end
-
+    
+end
   describe "signup page" do
     before { visit signup_path }
 
@@ -154,7 +154,6 @@ describe "User pages" do
       specify { expect(user.reload).not_to be_admin }
     end
   end
-  
-    
 end
+
 
